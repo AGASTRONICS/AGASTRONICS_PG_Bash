@@ -10,6 +10,7 @@
 
         <title>CHOICE COIN</title>
         <link rel="stylesheet" href="/css/style.css" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
         <script src="/js/myalgo.min.js"></script>
     </head>
 
@@ -35,32 +36,57 @@
         <div id="error" class="alert">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         </div>
+
         <section>
 
-            <div class="wrapper">
-                <header>CHOOSE YOUR CHOICE</header>
+            <div class="main">
+                <div class="wrapper">
+                    <div class="features">
+                        <ul>
+                            <li class="speech"><i class="fas fa-volume-up"></i></li>
+                            <li class="copy"><i class="fas fa-copy"></i></li>
+                            <li class="twitter"><i class="fab fa-twitter"></i></li>
+                        </ul>
+                    </div>
+                    <header>Leader</header>
+                    <div class="content">
+                        <div class="quote-area">
+                            <p class="quote">Never give up!</p>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="features">
+                            <div class="button">
+                                <div class="poll-area"></div>
+                                <input type="checkbox" name="poll" id="opt1" value="one">
+                                <label for="opt1" class="opt1">
+                                    <div class="row">
+                                        <div class="column">
+                                            <span class="circle"></span>
+                                            <span class="text">Mark</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+    
+                            <div class="button">
+                                <div class="poll-area"></div>
+                                <input type="checkbox" name="poll" id="opt2" value="two">
+                                <label for="opt2" class="opt2">
+                                    <div class="row">
+                                        <div class="column">
+                                            <span class="circle"></span>
+                                            <span class="text">Davide</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="poll-area">
-                    <input type="checkbox" name="poll" id="opt1" value="one">
-                    <input type="checkbox" name="poll" id="opt2" value="two">
-                    <label for="opt1" class="opt1">
-                        <div class="row">
-                            <div class="column">
-                                <span class="circle"></span>
-                                <span class="text">Option One</span>
-                            </div>
-                        </div>
-                    </label>
-                    <label for="opt2" class="opt2">
-                        <div class="row">
-                            <div class="column">
-                                <span class="circle"></span>
-                                <span class="text">Option Two</span>
-                            </div>
-                        </div>
-                    </label>
-                    <br />
-                    <label for="wallet-address">Enter CHOICE AMOUNT: </label><br />
-                    <input type="text" id="wallet-address" autofocus name="from" placeholder="Input amount of choice">
+                    <input type="text" id="wallet-address" autofocus name="from" placeholder="Amount of choice">
                 </div>
 
                 <button class="button" onclick="myAlgoWalletSign()">Vote</button>
@@ -68,9 +94,10 @@
             </div>
         </section>
 
-
         <script src="/js/script.js" defer></script>
+        <script src="/js/info.js" defer></script>
         <script src="/js/myalgowallet.js" defer></script>
+
 
     </body>
 
