@@ -16,7 +16,6 @@ const indexerClient = new algosdk.Indexer(tokenID, "https://testnet-algorand.api
 const ASSET_ID = 21364625;
 
 const myAlgoConnect = new MyAlgoConnect();
-
 const walletbtn = document.getElementById("walletbtn");
 const coin_in_gov_btn = document.getElementById("total_gov_coin");
 let decision = document.getElementsByName("poll");
@@ -25,14 +24,16 @@ let decision = document.getElementsByName("poll");
 async function Connect () {
     try {
         let response = await myAlgoConnect.connect();
-        const {address, name} = response[0];
-        walletbtn.innerHTML = `${name.toUpperCase()} ${address}`
-        walletbtn.setAttribute("onClick", "WalletAssets()");
+        const { address, name } = response[ 0 ];
+        walletbtn.innerHTML = `${address}`
+        walletbtn.setAttribute("onClick", navigator.clipboard.writeText(choiceInfo));
         let rate = 10;
         let history = await indexerClient.searchForTransactions().address(address).assetID(ASSET_ID).limit(rate).do()
         let totalCoin = 0;
+
         history["transactions"].forEach(data=>{
-            totalCoin += data["asset-transfer-transaction"]["amount"] /100
+            totalCoin += data[ "asset-transfer-transaction" ][ "amount" ] / 100
+            localStorage.setItem('tcoin', totalCoin);
         });
         coin_in_gov_btn.innerHTML += `
             You have sent ${totalCoin} choice coin over the past ${rate} transactions for voting
@@ -43,26 +44,24 @@ async function Connect () {
     }
 };
 
+
 const assetsbtn = document.getElementById("assets");
 
 async function WalletAssets() {
     const address = walletbtn.innerHTML.split(" ")[1].trim();
     let assets = await algodClient.accountInformation(address).do();
     let choice_balance = "";
-    let assetsAvailable = assets["assets"];
+    let assetsAvailable = assets[ "assets" ];
+    console.log( assetsAvailable )
+    localStorage.setItem('coin', assetsAvailable);
     let algo_amount = assets["amount"] * 0.000001;
     for (let i = 0; i < assetsAvailable.length; i++){
         if (assetsAvailable[i]["asset-id"] == ASSET_ID){
             choice_balance = assetsAvailable[i]["amount"]/100
         }
     };
-    assetsbtn.innerHTML = `
-        Asset : ALGO Balance: ${algo_amount}  
-        <br/>
-        Asset :CHOICE Balance: ${choice_balance}
-    `;
-    assetsbtn.classList.add("show");
-
+    localStorage.setItem( 'choice', choice_balance );
+    localStorage.setItem( 'algo', algo_amount );
 };
 
 const errorButton = document.getElementById("error");
@@ -80,7 +79,7 @@ async function myAlgoWalletSign(){
             let amount = parseInt(document.getElementById("wallet-address").value);
             if (!from){
                 errorButton.classList.toggle("error_show");
-                errorButton.innerHTML += "You have to connect your account"
+                errorButton.innerHTML += "Connect your account to cast a vote."
             }
             else {
                 try {
@@ -146,3 +145,6 @@ async function send(input, from, amount){
     }
     else {};
 }
+
+
+WalletAssets();

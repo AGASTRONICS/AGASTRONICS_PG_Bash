@@ -1,38 +1,24 @@
-const quoteText = document.querySelector(".quote"),
+choiceInfo = `Choice Coin is an Algorand Standard Asset that powers Decentralized Decisions, a voting and governance software built directly on the Algorand Blockchain. Decentralized Decisions enables organizations to make governance decisions in an open and decentralized manner. For the Choice Coin DAO, Decentralized Decisions leverages Proof-of-Participation as a governance mechanism, allowing voters to have a larger say in direct proportion to their contribution to the network.`
 quoteBtn = document.querySelector(".quote"),
-authorName = document.querySelector(".name"),
 speechBtn = document.querySelector(".speech"),
 copyBtn = document.querySelector(".copy"),
 twitterBtn = document.querySelector(".twitter"),
 synth = speechSynthesis;
 
-function randomQuote(){
-    quoteBtn.classList.add("loading");
-    quoteBtn.innerText = "Loading Quote...";
-    fetch("http://api.quotable.io/random").then(response => response.json()).then(result => {
-        quoteText.innerText = result.content;
-        authorName.innerText = result.author;
-        quoteBtn.classList.remove("loading");
-        quoteBtn.innerText = "New Quote";
-    });
-}
-
 speechBtn.addEventListener("click", ()=>{
-    if(!quoteBtn.classList.contains("loading")){
-        let utterance = new SpeechSynthesisUtterance(`${quoteText.innerText} by ${authorName.innerText}`);
+        let utterance = new SpeechSynthesisUtterance(`${choiceInfo}`);
         synth.speak(utterance);
         setInterval(()=>{
             !synth.speaking ? speechBtn.classList.remove("active") : speechBtn.classList.add("active");
         }, 10);
-    }
 });
 
 copyBtn.addEventListener("click", ()=>{
-    navigator.clipboard.writeText(quoteText.innerText);
+    navigator.clipboard.writeText(choiceInfo);
 });
 
 twitterBtn.addEventListener("click", ()=>{
-    let tweetUrl = `https://twitter.com/agastronics`;
+    let tweetUrl = `https://twitter.com/ChoiceCoinNews`;
     window.open(tweetUrl, "_blank");
 });
 

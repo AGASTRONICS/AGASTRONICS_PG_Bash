@@ -7,8 +7,10 @@
         <script src="https://cdn.jsdelivr.net/npm/algosdk@1.13.0-beta.1/dist/browser/algosdk.min.js"
             integrity="sha384-w9fodN00YjvWxdNoiyT+W6CqaATkXlfid9tnzBlToDqZWepVWLjI5wO7jNL4+aNs"
             crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-        <title>CHOICE COIN</title>
+        <title>ChoiceCoin | Voting</title>
+        <link rel="icon" href="/image/choice.png" />
         <link rel="stylesheet" href="/css/style.css" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
         <script src="/js/myalgo.min.js"></script>
@@ -22,7 +24,7 @@
                 </div>
                 <div class="right">
                     <li style="float:right">
-                        <a id="walletbtn" class="active" onclick="Connect()" href="#">
+                        <a id="walletbtn" class="active" onclick="Connect()">
                             CONNECT YOUR WALLET
                         </a>
                     </li>
@@ -43,7 +45,7 @@
                 <div class="wrapper">
                     <div class="features">
                         <ul>
-                            <li class="speech"><i class="fas fa-volume-up"></i></li>
+                            <li class="speech tts"><i class="fas fa-volume-up"></i></li>
                             <li class="copy"><i class="fas fa-copy"></i></li>
                             <li class="twitter"><i class="fab fa-twitter"></i></li>
                         </ul>
@@ -69,7 +71,7 @@
                                 </label>
                             </div>
     
-                            <div class="button">
+                            <div class="button" on:click={handleClick}>
                                 <div class="poll-area"></div>
                                 <input type="checkbox" name="poll" id="opt2" value="two">
                                 <label for="opt2" class="opt2">
@@ -91,11 +93,14 @@
 
                 <button class="button" onclick="myAlgoWalletSign()">Vote</button>
 
+                <div id="piechart"></div>
             </div>
         </section>
+        
 
         <script src="/js/script.js" defer></script>
         <script src="/js/info.js" defer></script>
+        <script src="/js/chart.js" defer></script>
         <script src="/js/myalgowallet.js" defer></script>
 
 

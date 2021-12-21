@@ -7,6 +7,27 @@
   /* overflow: hidden; */
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #c4c4c4;
+  border-radius: 4px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(5, 161, 141);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(40, 124, 61);
+}
+
 section{
   display: flex;
   align-items: center;
@@ -19,12 +40,15 @@ section{
   background: #929292;
 }
 .main{
+  margin-top: 30px;
+  margin-bottom: 30px;
   background: rgb(216, 216, 216);
   border-radius: 15px;
   padding: 25px;
-  max-width: 380px;
+  max-width: 390px;
   width: 100%;
   box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+  transition: width 2s linear 1s;
 }
 .main header{
   font-size: 22px;
@@ -201,7 +225,7 @@ li a {
     margin-left: auto;
     width: 100%;
     color:black;
-    border-radius: 4px;
+    border-radius: 4px rgb(7, 156, 124);
     resize: vertical;
     box-sizing: border-box;
     padding: 12px;
@@ -362,4 +386,11 @@ ul .speech.active{
 .buttons button.loading{
   opacity: 0.7;
   pointer-events: none;
+}
+
+#piechart{
+  background: rgb(216, 216, 216);
+  border-radius: 15px;
+  margin-top: 10px;
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
 }
