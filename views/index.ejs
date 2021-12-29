@@ -1,37 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- include header -->
+<%- include('partials/_header') %>
+<!-- /include header -->
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.jsdelivr.net/npm/algosdk@1.13.0-beta.1/dist/browser/algosdk.min.js"
-            integrity="sha384-w9fodN00YjvWxdNoiyT+W6CqaATkXlfid9tnzBlToDqZWepVWLjI5wO7jNL4+aNs"
-            crossorigin="anonymous"></script>
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-        <title>ChoiceCoin | Voting</title>
-        <link rel="icon" href="/image/choice.png" />
-        <link rel="stylesheet" href="/css/style.css" type="text/css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-        <script src="/js/myalgo.min.js"></script>
-    </head>
-
-    <body>
-        <nav>
-            <ul>
-                <div class="left">
-                    <li><a href="/">CHOICE COIN</a></li>
-                </div>
-                <div class="right">
-                    <li style="float:right">
-                        <a id="walletbtn" class="active" onclick="Connect()">
-                            CONNECT YOUR WALLET
-                        </a>
-                    </li>
-                    <li style="float:right"><a id="assets" onclick="Toggler()" class="assets"></a></li>
-                </div>
-            </ul>
-        </nav>
         <div id="total_gov_coin" class="alert">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         </div>
@@ -39,71 +9,31 @@
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         </div>
 
+        
         <section>
-
+            <p>
+                Choice Coin is an Algorand Standard Asset that powers Decentralized Decisions, a voting and governance software built
+                directly on the Algorand Blockchain. Decentralized Decisions enables organizations to make governance decisions in an
+                open and decentralized manner. For the Choice Coin DAO, Decentralized Decisions leverages Proof-of-Participation as a
+                governance mechanism, allowing voters to have a larger say in direct proportion to their contribution to the network.
+                Decentralized Decisions is now live! Check out the link below to vote on the first proposal for the Choice Coin DAO:
+                Vote 0.
+            </p>
+            <!-- form handling -->
+            <form action="/" method="POST">
+                <%- include('partials/_show') %>
+            </form>
+<% for(var i = 0; i < users.length; i++) { %>
             <div class="main">
-                <div class="wrapper">
-                    <div class="features">
-                        <ul>
-                            <li class="speech tts"><i class="fas fa-volume-up"></i></li>
-                            <li class="copy"><i class="fas fa-copy"></i></li>
-                            <li class="twitter"><i class="fab fa-twitter"></i></li>
-                        </ul>
-                    </div>
-                    <header>Leader</header>
-                    <div class="content">
-                        <div class="quote-area">
-                            <p class="quote">Never give up!</p>
-                        </div>
-                    </div>
-                    <div class="buttons">
-                        <div class="features">
-                            <div class="button">
-                                <div class="poll-area"></div>
-                                <input type="checkbox" name="poll" id="opt1" value="one">
-                                <label for="opt1" class="opt1">
-                                    <div class="row">
-                                        <div class="column">
-                                            <span class="circle"></span>
-                                            <span class="text">Mark</span>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-    
-                            <div class="button" on:click={handleClick}>
-                                <div class="poll-area"></div>
-                                <input type="checkbox" name="poll" id="opt2" value="two">
-                                <label for="opt2" class="opt2">
-                                    <div class="row">
-                                        <div class="column">
-                                            <span class="circle"></span>
-                                            <span class="text">Davide</span>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="poll-area">
                     <input type="text" id="wallet-address" autofocus name="from" placeholder="Amount of choice">
                 </div>
-
                 <button class="button" onclick="myAlgoWalletSign()">Vote</button>
-
-                <div id="piechart"></div>
             </div>
+<% } %>
+
         </section>
-        
 
-        <script src="/js/script.js" defer></script>
-        <script src="/js/info.js" defer></script>
-        <script src="/js/chart.js" defer></script>
-        <script src="/js/myalgowallet.js" defer></script>
-
-
-    </body>
-
-</html>
+<!-- include header -->
+<%- include('partials/_footer') %>
+<!-- /include header -->

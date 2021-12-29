@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Choice Coin Voting Platform",
   "main": "server.js",
-  "type": "module",
   "scripts": {
     "start": "nodemon server.js"
   },
@@ -37,6 +36,11 @@
     "path": "^0.12.7",
     "tslib": "^2.3.1",
     "webpack": "^5.65.0",
-    "webpack-cli": "^4.9.1"
+    "webpack-cli": "^4.9.1",
+    "axios": "^0.21.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.10.11",
+    "morgan": "^1.10.0"
   }
 }

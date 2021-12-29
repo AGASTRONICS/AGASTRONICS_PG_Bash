@@ -33,16 +33,16 @@ section{
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #c4c4c4;
+  background: #cecdcd;
 }
 ::selection{
   color: #fff;
-  background: #929292;
+  background: #d8d8d8;
 }
 .main{
   margin-top: 30px;
   margin-bottom: 30px;
-  background: rgb(216, 216, 216);
+  background: rgb(177, 177, 177);
   border-radius: 15px;
   padding: 25px;
   max-width: 390px;
@@ -54,7 +54,7 @@ section{
   font-size: 22px;
   font-weight: 400;
 }
-.main .poll-area{
+.poll-area{
   margin: 15px 0 10px 0;
 }
 .poll-area label{
@@ -210,6 +210,12 @@ li a {
     text-decoration: none;
 
 }
+
+#site-main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
   
 /* li a:hover:not(.active) { */
     /* background-color: #111; */
@@ -232,7 +238,7 @@ li a {
     font-size: 8px;
 }
 
-button{
+.button{
     width: 100%;
     border-radius: 4px;
     border: none;
@@ -245,8 +251,6 @@ button{
     font-weight: 200;
     color: white;
 }
-
-
 
 .alert {
     /* text-transform: capitalize; */

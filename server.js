@@ -1,33 +1,35 @@
-import express from "express";
-import path from 'path';
-import cors from 'cors';
+const express = require('express');
+const dotenv = require('dotenv');
+const morgan = require('morgan');
+const bodyparser = require("body-parser");
+const path = require('path');
 
+const connectDB = require('./server/database/connection');
 
 const app = express();
 
+dotenv.config( { path : 'config.env'} )
+const PORT = process.env.PORT || 5000
 
-// define directory name
-const __dirname = path.resolve();
+// log requests
+app.use(morgan('tiny'));
 
-// add it to read .css, .js etc
-app.use(express.static(__dirname + "/static"));
+// mongodb connection
+connectDB();
 
-// Set ejs config
-app.set( "view engine", "ejs" );
+// parse request to body-parser
+app.use(bodyparser.urlencoded({ extended : true}))
 
-// Middlewares
-app.use(cors());
-app.use(express.json());
+// set view engine
+app.set("view engine", "ejs")
+//app.set("views", path.resolve(__dirname, "views/ejs"))
 
-//Routes
-app.get("/", (req, res) => {
-  res.render("index");
-});
+// load assets
+app.use('/css', express.static(path.resolve(__dirname, "static/css")))
+app.use('/img', express.static(path.resolve(__dirname, "static/img")))
+app.use('/js', express.static(path.resolve(__dirname, "static/js")))
 
-// Port
-const PORT = process.env.PORT || 3000 ;
+// load routers
+app.use('/', require('./server/routes/router'))
 
-// Listening to server
-app.listen(PORT, ()=> {
-    console.log(`Server is listening on port ${PORT}`)   
-});
+app.listen(PORT, ()=> { console.log(`Server is running on http://localhost:${PORT}`)});

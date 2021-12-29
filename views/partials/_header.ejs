@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/algosdk@1.13.0-beta.1/dist/browser/algosdk.min.js"
+            integrity="sha384-w9fodN00YjvWxdNoiyT+W6CqaATkXlfid9tnzBlToDqZWepVWLjI5wO7jNL4+aNs"
+            crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        
+        <title>ChoiceCoin | Voting</title>
+        <link rel="icon" href="/static/img/choice.png" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+        <script src="/js/myalgo.min.js"></script>
+        <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    
+    <!-- Header -->
+            <nav>
+                <ul>
+                    <div class="left">
+                        <li><a href="/">CHOICE COIN</a></li>
+                    </div>
+                    <div class="left">
+                        <li><a  href="/add-user">New Proposal</a></li>
+                    </div>
+                    <div class="left">
+                        <li><a  href="/">Proposals</a></li>
+                    </div>
+                    <div class="right">
+                        <li style="float:right">
+                            <a id="walletbtn" class="active" onclick="Connect()">
+                                CONNECT YOUR WALLET
+                            </a>
+                        </li>
+                        <li style="float:right"><a id="assets" onclick="Toggler()" class="assets"></a></li>
+                    </div>
+                </ul>
+            </nav>
+    <!-- /Header -->
